@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { add } from './addStringCalculate';
 
 function StringCalculator() {
     const [input, setInput] = useState("");
@@ -6,10 +7,16 @@ function StringCalculator() {
     const [error, setError] = useState(null);
 
     const handleCalculate = () => {
+      try {
+        const sum = add(input);
+        setResult(sum);
+        setError(null);
+      } catch (e) {
+        setResult(null);
+        setError(e.message);
+      }
        
-          setResult(input);
-       
-      };
+    };
 
   return (
     <div className="string-calculator">
