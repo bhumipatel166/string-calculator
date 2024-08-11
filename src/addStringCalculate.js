@@ -2,15 +2,11 @@ export function add(numbers) {
     if (numbers === "") return 0;
   
     // Handle custom delimiters
-    let delimiter = /,|\n|;|/;
-    if (numbers.startsWith("//")) {
-      const delimiterLineEndIndex = numbers.indexOf("\n");
-      delimiter = new RegExp(numbers.substring(2, delimiterLineEndIndex));
-      numbers = numbers.substring(delimiterLineEndIndex + 1);
-    }
+    let delimiter = /,|\n|;|\|/;
+    const escapedDelimiter = numbers.replace(/[^0-9|-]/g, ',');
   
-    const numberArray = numbers.split(delimiter).map(Number);
-    
+    const numberArray = escapedDelimiter.split(delimiter).map(Number);
+    console.log(numberArray);
     // Check for negative numbers
     const negatives = numberArray.filter(n => n < 0);
     if (negatives.length > 0) {
