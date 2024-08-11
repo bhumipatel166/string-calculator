@@ -13,7 +13,6 @@ function StringCalculator() {
 
   return (
     <div className="string-calculator">
-       <h2>String Calculator</h2>
       <input
         type="text"
         value={input}
